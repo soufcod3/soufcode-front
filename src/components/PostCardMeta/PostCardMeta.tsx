@@ -20,7 +20,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
       <span className="text-neutral-500 dark:text-neutral-400 font-normal line-clamp-1">
         dim. 12 mars 2023
       </span>
-      <Badge className="mx-3" name={_getTagNameRd()} />
+      <Badge className="mx-3" name={'Web dev'} />
     </div>
   );
 };

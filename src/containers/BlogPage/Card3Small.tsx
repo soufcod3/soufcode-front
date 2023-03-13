@@ -1,21 +1,24 @@
 import PostCardMeta from "components/PostCardMeta/PostCardMeta";
-import { _getImgRd, _getTitleRd } from "contains/fakeData";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import NcImage from "shared/NcImage/NcImage";
 
 export interface Card3SmallProps {
   className?: string;
+  article?: any;
 }
 
-const Card3Small: FC<Card3SmallProps> = ({ className = "h-full" }) => {
+const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", article }) => {
+
+  console.log('article', article)
+
   return (
     <div
       className={`nc-Card3Small relative flex flex-col-reverse sm:flex-row sm:justify-between sm:items-center ${className}`}
       data-nc-id="Card3Small"
     >
       <Link
-        to={"/blog-single"}
+        to={article.slug}
         className=" absolute inset-0"
         title={"title"}
       ></Link>
@@ -23,17 +26,17 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full" }) => {
         <PostCardMeta/>
         <h2 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
           <Link
-            to={"/blog-single"}
+            to={article.slug}
             className="line-clamp-2 capitalize"
             title={"title"}
           >
-            {_getTitleRd()}
+            {article.title}
           </Link>
         </h2>
+        <p>{article.content}</p>
       </div>
-
       <Link
-        to={`/blog-single`}
+        to={article.slug}
         title={"title"}
         className={`block sm:w-20 flex-shrink-0 relative rounded-lg overflow-hidden mb-5 sm:ml-4 sm:mb-0 group`}
       >
@@ -41,7 +44,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full" }) => {
           <NcImage
             containerClassName="absolute inset-0"
             className="object-cover w-full h-full group-hover:scale-110 transform transition-transform duration-300"
-            src={_getImgRd()}
+            src={'http://localhost:1338' + article.preview_img.data.attributes.formats.thumbnail.url}
           />
         </div>
       </Link>
