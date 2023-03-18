@@ -12,10 +12,10 @@ export interface Card3SmallProps {
 
 const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", article }) => {
 
-  const date = DateTime.fromISO(article.publishedAt, { locale: 'fr' });
+  const date = DateTime.fromISO(article?.publishedAt, { locale: 'fr' });
   const publishedAt = date.toFormat('ccc dd MMMM yyyy');
 
-  const fetchedCategories = article.categories.data
+  const fetchedCategories = article?.categories.data
 
   return (
     <div
@@ -23,28 +23,28 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", article }) => {
       data-nc-id="Card3Small"
     >
       <div className="relative space-y-2">
-        <PostCardMeta publishedAt={publishedAt} fetchedCategories={fetchedCategories} timer={article.timer}/>
+        <PostCardMeta publishedAt={publishedAt} fetchedCategories={fetchedCategories} timer={article?.timer}/>
         <Link
-          to={`articles/${article.slug}`}
+          to={`articles/${article?.slug}`}
           className="line-clamp-2 capitalize"
-          title={article.title}
+          title={article?.title}
         >
           <h2 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
-            {article.title}
+            {article?.title}
           </h2>
-          <p>{article.preview}</p>
+          <p>{article?.preview}</p>
         </Link>
       </div>
       <Link
-        to={`articles/${article.slug}`}
-        title={article.title}
+        to={`articles/${article?.slug}`}
+        title={article?.title}
         className={`block sm:w-20 flex-shrink-0 relative rounded-lg overflow-hidden mb-5 sm:ml-4 sm:mb-0 group`}
       >
         <div className={`w-full h-0 aspect-w-16 aspect-h-9 sm:aspect-h-16`}>
           <NcImage
             containerClassName="absolute inset-0"
             className="object-cover w-full h-full group-hover:scale-110 transform transition-transform duration-300"
-            src={'http://localhost:1338' + article.main_img.data.attributes.url}
+            src={'http://localhost:1338' + article?.main_img.data.attributes.url}
           />
         </div>
       </Link>

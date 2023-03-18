@@ -10,6 +10,7 @@ import { Article, FetchedArticle } from "interfaces";
 import { extractFromArticle } from "utils/extractFromArticle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
+import WidgetPosts from "./WidgetPosts";
 
 export interface SectionAllPostsProps {
   className?: string;
@@ -87,7 +88,7 @@ const SectionAllPosts: FC<SectionAllPostsProps> = ({
           </div>
         </div>
         <div className="w-full space-y-7 mt-24 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3 ">
-          <WidgetNewsLetter />
+        <WidgetPosts />
         </div>
       </div>
     </div>

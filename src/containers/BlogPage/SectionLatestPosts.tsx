@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Card3Small from "./Card3Small";
 import axios from "axios";
 import { FetchedArticle, FetchedCategory } from "interfaces";
+import WidgetPosts from "./WidgetPosts";
 
 export interface SectionLatestPostsProps {
   className?: string;
@@ -61,19 +62,15 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
 
           <div className={`grid gap-6 md:gap-8 grid-cols-1`}>
             {
-              homeDisplay && fetchedArticles ?
+              fetchedArticles &&
                 fetchedArticles.map((fetchedArticle: any, idx: any) => {
-                  const article = fetchedArticle.attributes
+                  const article: Article = fetchedArticle.attributes
                   return <Card3Small key={idx} article={article} />
                 })
-                :
-                fetchedArticles?.sort((a, b)=>{return a.id < b.id ? 1 : -1}).map((articleData: any, idx: any) => (
-                  <Card3 key={idx} article={articleData.attributes} />
-                ))
-            }
+              }
           </div>
           {
-          homeDisplay &&
+            homeDisplay &&
             <div className="flex flex-col mb-10 mt-7 md:mt-7 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
               {/* <Pagination /> */}
               <Link to={"/articles"}>
@@ -83,7 +80,7 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
           }
         </div>
         <div className="w-full space-y-7 mt-24 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3 ">
-          <WidgetNewsLetter />
+          <WidgetPosts homeDisplay />
         </div>
       </div>
     </div>

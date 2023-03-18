@@ -43,6 +43,9 @@
     },
     "timer": {
       "type": "integer"
+    },
+    "isTrending": {
+      "type": "boolean"
     }
   }
 }

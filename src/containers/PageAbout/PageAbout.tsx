@@ -8,6 +8,7 @@ import BgGlassmorphism from "components/BgGlassmorphism/BgGlassmorphism";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import SectionHero from "./SectionHero";
 import SectionClientSay from "components/SectionClientSay/SectionClientSay";
+import Heading from "components/Heading/Heading";
 
 export interface PageAboutProps {
   className?: string;
@@ -20,29 +21,27 @@ const PageAbout: FC<PageAboutProps> = ({ className = "" }) => {
       data-nc-id="PageAbout"
     >
       <Helmet>
-        <title>About || Ciscryp React Template</title>
+        <title>A Propos</title>
       </Helmet>
-
-      {/* ======== BG GLASS ======== */}
-      <BgGlassmorphism />
 
       <div className="container py-16 lg:py-28 space-y-16 lg:space-y-28">
         <SectionHero
           rightImg={rightImg}
-          heading="👋 About Us."
+          heading="👋 C'est moi."
           btnText=""
           subHeading="We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the around the world."
         />
 
-        <SectionFounder />
-        <div className="relative py-16">
-          <BackgroundSection />
-          <SectionClientSay />
+
+        <div className="nc-SectionFounder relative">
+          <Heading
+            desc="We’re impartial and independent, and every day we create distinctive,
+          world-class programmes and content"
+          >
+            Pour me joindre
+          </Heading>
         </div>
-
-        <SectionStatistic />
-
-        <SectionSubscribe2 />
+        
       </div>
     </div>
   );

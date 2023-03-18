@@ -23,7 +23,7 @@ const WidgetHeading1: FC<WidgetHeading1Props> = ({
       </h2>
       {!!viewAll.href && (
         <Link
-          className="flex-shrink-0 block text-primary-700 dark:text-primary-500 font-semibold text-sm"
+          className="flex-shrink-0 block text-green font-semibold text-sm"
           target={viewAll.targetBlank ? "_blank" : undefined}
           rel="noopener noreferrer"
           to={viewAll.href}
