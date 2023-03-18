@@ -31,8 +31,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
                 pathname: i.href || undefined,
               }}
               className={({ isActive }) =>
-                `flex px-4 py-2.5 dark:text-neutral-200 text-sm font-medium rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 mt-[2px] ${
-                  isActive ? "text-secondary-500" : "text-neutral-900"
+                `flex px-4 py-2.5 dark:text-neutral-200 text-sm font-medium rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 mt-[2px] ${isActive ? "text-secondary-500" : "text-neutral-900"
                 }`
               }
             >
@@ -78,8 +77,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <NavLink
           end
           className={({ isActive }) =>
-            `flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg ${
-              isActive ? "text-secondary-500" : ""
+            `flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg ${isActive ? "text-secondary-500" : ""
             }`
           }
           to={{
@@ -120,12 +118,10 @@ const NavMobile: React.FC<NavMobileProps> = ({
     <div className="overflow-y-auto w-full max-w-sm h-screen py-2 transition transform shadow-lg ring-1 dark:ring-neutral-700 bg-white dark:bg-neutral-900 divide-y-2 divide-neutral-100 dark:divide-neutral-800">
       <div className="py-6 px-5">
         <Logo />
-        <div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
-          <span>
-            Discover the most outstanding articles on all topics of life. Write
-            your stories and share them
-          </span>
-
+        <ul className="flex flex-col py-6 px-2 space-y-1">
+          {data.map(_renderItem)}
+        </ul>
+        <div className="flex flex-col border-t text-neutral-700 dark:text-neutral-300 text-sm">
           <div className="flex justify-between items-center mt-4">
             <SocialsList itemClass="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full text-xl" />
             <span className="block">
@@ -136,17 +132,6 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <span className="absolute right-2 top-2 p-1">
           <ButtonClose onClick={onClickClose} />
         </span>
-      </div>
-      <ul className="flex flex-col py-6 px-2 space-y-1">
-        {data.map(_renderItem)}
-      </ul>
-      <div className="flex items-center justify-between py-6 px-5 space-x-2">
-        <ButtonPrimary href={"/page-upload-item"} className="!px-10">
-          Create
-        </ButtonPrimary>
-        <ButtonSecondary href={"/connect-wallet"} className="flex-1">
-          Connect Wallet
-        </ButtonSecondary>
       </div>
     </div>
   );
