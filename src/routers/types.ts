@@ -14,7 +14,7 @@ export interface LocationStates {
   "/connect-wallet"?: {};
   "/account"?: {};
   "/articles"?: {};
-  "/blog-single"?: {};
+  "/articles/:slug"?: {};
   "/a-propos"?: {};
   "/me-joindre"?: {};
   "/login"?: {};

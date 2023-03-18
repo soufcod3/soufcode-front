@@ -11,10 +11,11 @@ export interface BadgeProps {
 
 const Badge: FC<BadgeProps> = ({
   className = "relative",
-  name,
+  name = "undefined",
   color = "blue",
   href,
 }) => {
+
   const getColorClass = (hasHover = true) => {
     switch (color) {
       case "pink":

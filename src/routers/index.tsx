@@ -37,7 +37,7 @@ export const pages: Page[] = [
   { path: "/page-upload-item", component: PageUploadItem },
   { path: "/connect-wallet", component: PageConnectWallet },
   { path: "/articles", component: BlogPage },
-  { path: "/blog-single", component: BlogSingle },
+  { path: "/articles/:slug", component: BlogSingle },
   { path: "/me-joindre", component: PageContact },
   { path: "/a-propos", component: PageAbout },
   { path: "/signup", component: PageSignUp },

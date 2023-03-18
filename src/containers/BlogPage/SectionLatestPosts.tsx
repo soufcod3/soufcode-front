@@ -1,44 +1,46 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Heading from "components/Heading/Heading";
-import Pagination from "shared/Pagination/Pagination";
-import ButtonPrimary from "shared/Button/ButtonPrimary";
-import WidgetCategories from "./WidgetCategories";
-import WidgetPosts from "./WidgetPosts";
 import Card3 from "./Card3";
 import WidgetNewsLetter from "./WidgetNewsletter";
 import { Link } from "react-router-dom";
-import Card12 from "./Card12";
 import Card3Small from "./Card3Small";
 import axios from "axios";
+import { FetchedArticle, FetchedCategory } from "interfaces";
 
-//
 export interface SectionLatestPostsProps {
   className?: string;
   postCardName?: "card3";
   homeDisplay?: boolean;
 }
 
+export interface FetchedCategories {
+  data: FetchedCategory[]
+}
+
 export interface Article {
-  content: string,
-  createdAt: string,
-  publishedAt: string,
-  slug: string,
-  title: string,
+  title: string
+  preview: string
+  main_img: any
+  content: string
+  slug: string
+  createdAt: string
+  publishedAt: string
   updatedAt: string
+  categories: FetchedCategories
+  timer: number
 }
 
 const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
-  postCardName = "card3",
   className = "",
   homeDisplay = false
 }) => {
 
-  const [fetchedArticles, setFetchedArticles] = useState<Partial<Article>[]>([])
+  const [fetchedArticles, setFetchedArticles] = useState<FetchedArticle[]>([])
 
   useEffect(() => {
-    axios.get('http://localhost:1338/api/articles?populate=*', {
+    axios.get(`${process.env.REACT_APP_STRAPI_API_URL}/articles?sort=publishedAt%3Adesc&pagination[pageSize]=3&populate=*`, {
       headers: {
-        'Authorization': 'Bearer 696c3d01867d17b577258c37eaa2898775f77879cd6705d96bab6088a02272d594c7015270398f83e4d5b0a079ce341d83bf208670eaa56a16e6da1267875f8f447897e7cd2452e06329f4cd353774e179fa5a1fce4021ad82dbdc40648c06e41a6d0d79a532b7d138d81353547b0fb18fa4822da3e46ce574bb59d3d11b7b4e'
+        'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`
       }
     }).then(res => {
       console.log('fetchArticles', res.data.data)
@@ -47,12 +49,12 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
   }, [])
 
   return (
-    <div className={`nc-SectionLatestPosts relative ${className}`}>
+    <div className={`nc-SectionLatestPosts relative ${className}`} >
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/5 xl:w-2/3 xl:pr-14">
           {
             homeDisplay ?
-              <Heading>Mes derniers articles 🔬</Heading>
+              <Heading><Link to={"/articles"}>Mes 3 derniers articles</Link></Heading>
               :
               <Heading>Tous les articles</Heading>
           }
@@ -60,21 +62,22 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
           <div className={`grid gap-6 md:gap-8 grid-cols-1`}>
             {
               homeDisplay && fetchedArticles ?
-                fetchedArticles.map((articleData: any, idx: any) => (
-                  <Card3Small key={idx} className="" article={articleData.attributes} />
-                ))
+                fetchedArticles.map((fetchedArticle: any, idx: any) => {
+                  const article = fetchedArticle.attributes
+                  return <Card3Small key={idx} article={article} />
+                })
                 :
-                fetchedArticles?.map((articleData: any, idx: any) => (
-                  <Card3Small key={idx} className="" article={articleData.attributes} />
-                  // <Card3 key={idx} className="" article={article}/>
+                fetchedArticles?.sort((a, b)=>{return a.id < b.id ? 1 : -1}).map((articleData: any, idx: any) => (
+                  <Card3 key={idx} article={articleData.attributes} />
                 ))
             }
           </div>
-          {homeDisplay &&
-            <div className="flex flex-col mb-10 mt-12 md:mt-20 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
+          {
+          homeDisplay &&
+            <div className="flex flex-col mb-10 mt-7 md:mt-7 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
               {/* <Pagination /> */}
               <Link to={"/articles"}>
-                <p className="flex items-center font-bold">Parcourir les articles&nbsp;<i className="las la-arrow-right text-xl"></i></p>
+                <p className="flex items-center font-bold text-green">Tous les articles&nbsp;<i className="las la-arrow-right text-xl"></i></p>
               </Link>
             </div>
           }

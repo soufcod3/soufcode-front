@@ -15,7 +15,7 @@
     "title": {
       "type": "string"
     },
-    "preview_img": {
+    "main_img": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -26,11 +26,23 @@
         "audios"
       ]
     },
-    "slug": {
-      "type": "string"
-    },
     "content": {
       "type": "richtext"
+    },
+    "preview": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "timer": {
+      "type": "integer"
     }
   }
 }
