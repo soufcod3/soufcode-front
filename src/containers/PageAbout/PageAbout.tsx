@@ -1,13 +1,7 @@
-import rightImg from "images/about-hero-right.png";
+import rightImg from "images/about-hero-right.jpg";
 import React, { FC } from "react";
-import SectionFounder from "./SectionFounder";
-import SectionStatistic from "./SectionStatistic";
 import { Helmet } from "react-helmet";
-import SectionSubscribe2 from "components/SectionSubscribe2/SectionSubscribe2";
-import BgGlassmorphism from "components/BgGlassmorphism/BgGlassmorphism";
-import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import SectionHero from "./SectionHero";
-import SectionClientSay from "components/SectionClientSay/SectionClientSay";
 import Heading from "components/Heading/Heading";
 
 export interface PageAboutProps {
@@ -27,16 +21,14 @@ const PageAbout: FC<PageAboutProps> = ({ className = "" }) => {
       <div className="container py-16 lg:py-28 space-y-16 lg:space-y-28">
         <SectionHero
           rightImg={rightImg}
-          heading="👋 C'est moi."
+          heading="👋 Enchanté."
           btnText=""
-          subHeading="We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the around the world."
+          subHeading="En pleine reconversion, je me suis fixé le challenge de partager régulièrement mes découvertes sous forme d'articles et de vidéos."
         />
-
 
         <div className="nc-SectionFounder relative">
           <Heading
-            desc="We’re impartial and independent, and every day we create distinctive,
-          world-class programmes and content"
+            desc="Vous pouvez me contacter par mail à <a href='mailto:someone@example.com' target='blank'><strong>soufcode@gmail.com</strong></a>"
           >
             Pour me joindre
           </Heading>

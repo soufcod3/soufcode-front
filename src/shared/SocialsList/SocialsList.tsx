@@ -1,8 +1,5 @@
 import { SocialType } from "shared/SocialsShare/SocialsShare";
 import React, { FC } from "react";
-import facebook from "images/socials/facebook.svg";
-import twitter from "images/socials/twitter.svg";
-import telegram from "images/socials/telegram.svg";
 import youtube from "images/socials/youtube.svg";
 import instagram from "images/socials/instagram.svg";
 import linkedin from "images/socials/linkedin.svg";

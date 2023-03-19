@@ -8,7 +8,7 @@ function PageHome() {
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <Helmet>
-        <title>Blog de soufcode</title>
+        <title>Accueil ~ soufcode</title>
       </Helmet>
 
       <div className="container relative mt-5 mb-5 sm:mb-24 lg:mt-20 lg:mb-5">
@@ -16,29 +16,29 @@ function PageHome() {
           className="pb-5"
           heading={
             <>
-              <p className="text-xl">Bienvenue sur mon blog 👋🏼</p>
+              <p className="text-xl mb-2">#reconversion #conseils #retoursdexperience</p>
               <span className="text-3xl md:text-4xl xl:text-5xl">
-                Ici je partage mes <span className="text-green">découvertes</span> en
+                Je partage mes <span className="text-green">découvertes</span> en
               </span>
             </>
           }
-          subHeading={<div className="flex justify-center">
+          subHeading={<div className="flex justify-center flex-wrap gap-2">
             <Badge
               href={"/"}
-              className="mx-3 text-lg cursor-pointer"
+              className="mx-3 text-md cursor-pointer"
               color="gray"
               name={"Développement web"}
             />
             <Badge
               href={"/"}
-              className="mx-3 text-lg cursor-pointer"
-              color="blue"
+              className="mx-3 text-md cursor-pointer"
+              color="gray"
               name={"DevOps"}
             />
             <Badge
               href={"/"}
-              className="mx-3 text-lg cursor-pointer"
-              color="purple"
+              className="mx-3 text-md cursor-pointer"
+              color="gray"
               name={"UX/UI"}
             />
           </div>}
