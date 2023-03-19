@@ -11,6 +11,10 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   isCenter?: boolean;
 }
 
+type HTML = {
+  __html: string
+}
+
 const solutions = [
   {
     name: "last 24 hours",
@@ -127,8 +131,7 @@ const Heading: React.FC<HeadingProps> = ({
           )}
         </h2>
         {!!desc && (
-          <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-500 dark:text-neutral-400">
-            {desc}
+          <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-500 dark:text-neutral-400" dangerouslySetInnerHTML={{ __html: desc} as HTML}>
           </span>
         )}
       </div>

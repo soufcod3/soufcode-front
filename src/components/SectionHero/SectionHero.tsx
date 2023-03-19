@@ -22,7 +22,7 @@ const SectionHero: FC<SectionHeroProps> = ({
     >
       <div className="flex justify-center">
         <div className="w-screen max-w-full xl:max-w-xl space-y-5 lg:space-y-7">
-          <h2 className="text-3xl !leading-tight font-semibold text-neutral-900 md:text-4xl xl:text-5xl dark:text-neutral-100 mb-5">
+          <h2 className="!leading-tight font-semibold text-neutral-900  dark:text-neutral-100 mb-5">
             {heading}
           </h2>
           <span className="text-base xl:text-lg text-neutral-6000 dark:text-neutral-400 max-w-lg">

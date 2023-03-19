@@ -16,16 +16,14 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
           <Logo />
         </div>
         <div className="flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1">
-          <div className="hidden items-center xl:flex space-x-2">
+          <div className="hidden items-center sm:flex space-x-2">
             <Navigation />
             <div className="hidden sm:block h-6 border-l border-neutral-300 dark:border-neutral-6000"></div>
             <div className="flex">
               <SwitchDarkMode />
             </div>
           </div>
-          <div className="flex items-center space-x-3 xl:hidden">
-            <NotifyDropdown />
-            <AvatarDropdown />
+          <div className="flex items-center space-x-3 sm:hidden">
             <MenuBar />
           </div>
         </div>
